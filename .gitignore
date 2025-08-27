@@ -1,0 +1,38 @@
+# Build directories
+build/
+cmake-build-debug/
+cmake-build-release/
+
+# Compiled Object files
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+#*.a
+#*.lib
+
+# Executables
+*.exe
+*.out
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# IDE files
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log files
+*.log

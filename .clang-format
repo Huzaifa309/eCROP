@@ -1,0 +1,6 @@
+BasedOnStyle: Google  # or LLVM, Mozilla, etc.
+IndentWidth: 4        # Number of spaces for indentation (visual width)
+TabWidth: 4           # Number of spaces a tab character represents
+SpaceAfterCStyleCast: false
+PointerAlignment: Left
+ReferenceAlignment: Left

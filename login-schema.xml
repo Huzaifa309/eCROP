@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbe:messageSchema xmlns:sbe="http://fixprotocol.io/2016/sbe"
+                   package="messages"
+                   id="1"
+                   version="1"
+                   semanticVersion="1.0.0"
+                   byteOrder="littleEndian">
+    <types>
+        <composite name="Char64str" description="64-byte string">
+            <type name="charVal" primitiveType="char" length="64"/>
+        </composite>
+        <composite name="messageHeader" description="Message header">
+            <type name="blockLength" primitiveType="uint16"/>
+            <type name="templateId" primitiveType="uint16"/>
+            <type name="schemaId" primitiveType="uint16"/>
+            <type name="version" primitiveType="uint16"/>
+        </composite>
+    </types>
+    <message name="IdentityMessage" id="1" description="Identity Verification Message">
+        <field name="msg" id="1" type="Char64str"/>
+        <field name="type" id="2" type="Char64str"/>
+        <field name="id" id="3" type="Char64str"/>
+        <field name="name" id="4" type="Char64str"/>
+        <field name="dateOfIssue" id="5" type="Char64str"/>
+        <field name="dateOfExpiry" id="6" type="Char64str"/>
+        <field name="address" id="7" type="Char64str"/>
+        <field name="verified" id="8" type="Char64str"/>
+    </message>
+</sbe:messageSchema>
