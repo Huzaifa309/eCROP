@@ -171,9 +171,10 @@ chmod +x install_dependencies.sh
    git clone https://github.com/ehsanrashid/aeronWrapper.git
    cd aeronWrapper
    mkdir build && cd build
-   cmake ..
-   make -j$(nproc)
-   sudo make install
+   crm -rf build && mkdir build && cd build
+   cmake -S .. -B . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=<path/to/aeronWrapper/install>
+   cmake --build . -j$(nproc)
+   cmake --install .
    cd ../..
    ```
 
@@ -205,7 +206,7 @@ chmod +x install_dependencies.sh
    ```sh
    mkdir build
    cd build
-   cmake ..
+   cmake .. -DCMAKE_PREFIX_PATH=<path/to/aeronWrapper/install>
    make -j$(nproc)
    ```
 
