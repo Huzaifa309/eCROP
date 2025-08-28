@@ -22,9 +22,24 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     /usr/local/include
 )
 
+# --- quillLogger library ---
+add_library(quillLogger STATIC IMPORTED)
+set_target_properties(quillLogger PROPERTIES
+    IMPORTED_LOCATION "/usr/local/lib/libquillLogger.a"
+    INTERFACE_INCLUDE_DIRECTORIES "/usr/local/include"
+)
+
+# --- DbFactory library ---
+add_library(DbFactory STATIC IMPORTED)
+set_target_properties(DbFactory PROPERTIES
+    IMPORTED_LOCATION "/usr/local/lib/libDbFactory.a"
+    INTERFACE_INCLUDE_DIRECTORIES "/usr/local/include"
+)
+
+# --- Link everything ---
 target_link_libraries(${PROJECT_NAME} PRIVATE
     aeronWrapper::aeronWrapper
-    /usr/local/lib/libquillLogger.a
-    /usr/local/lib/libDbFactory.a
+    quillLogger
+    DbFactory
     ${PQXX_LIBRARIES}
 )
