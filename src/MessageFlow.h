@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "Message.h"
-#include "Types.h"
+#include "MessageType.h"
 
 class MessageFlow final {
    private:

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Types.h"
+#include "MessageType.h"
 
 class Message {
    public:
