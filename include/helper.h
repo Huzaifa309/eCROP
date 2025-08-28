@@ -1,22 +1,29 @@
 #pragma once
 
-#include <iostream>
+#include <algorithm>
+#include <cctype>
 #include <sstream>
 #include <string>
 
 inline bool string_to_bool(const std::string& str) noexcept {
-    std::istringstream is(str);
+    std::istringstream iss(str);
     bool b;
-    is >> std::boolalpha >> b;  // enables reading "true"/"false"
-    if (is.fail()) {
+    iss >> std::boolalpha >> b;  // enables reading "true"/"false"
+    if (iss.fail()) {
         // Try as integer
-        is.clear();
-        is.str(str);
+        iss.clear();
+        iss.str(str);
         int i;
-        is >> i;
-        return i != 0;
+        iss >> i;
+        b = (i != 0);
     }
     return b;
+}
+
+inline std::string bool_to_string(bool b) noexcept {
+    std::ostringstream oss;
+    oss << std::boolalpha << b;
+    return oss.str();
 }
 
 inline void trim(std::string& str) noexcept {
