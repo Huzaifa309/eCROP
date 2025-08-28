@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <ios>
 #include <sstream>
 #include <string>
 
