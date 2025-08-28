@@ -12,7 +12,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(PQXX REQUIRED libpqxx)
 
 # Collect source files
-file(GLOB SOURCES "src/*.cpp")
+file(GLOB SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
 # Create a single executable
 add_executable(${PROJECT_NAME} ${SOURCES})
