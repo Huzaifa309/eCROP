@@ -1,7 +1,6 @@
 #pragma once
 
 #include <atomic>
-#include <iosfwd>
 #include <memory>
 #include <string>
 #include <vector>

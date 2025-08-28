@@ -1,7 +1,6 @@
 #include "MessageHandler.h"
 
 #include <exception>
-#include <iostream>
 
 #include "Config.h"
 #include "DatabaseFactory.h"
