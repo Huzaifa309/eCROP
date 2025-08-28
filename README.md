@@ -290,20 +290,15 @@ chmod +x install_dependencies.sh
 ```
 .
 ├── CMakeLists.txt
-├── login-schema.xml       # SBE schema definition
+├── login-schema.xml             # SBE schema definition
 ├── sbe-all-1.36.0-SNAPSHOT.jar  # SBE code generator
-├── include
-|   ├── eCROPEngine.h       # Engine class definition
-|   ├── helper.h           # Helper functions
-|   └── messages/          # Generated SBE message classes
-|       ├── IdentityMessage.h
-|       ├── MessageHeader.h
-|       └── Char64str.h
 ├── src
-|   ├── eCROPEngine.cpp     # Engine class implementation
-|   ├── main.cpp           # Application entry point
+|   ├── eCropEngine.h            # Engine class definition
+|   ├── eCropEngine.cpp          # Engine class implementation
+|   ├── helper.h                 # Helper functions
+|   ├── main.cpp                 # Application entry point
 └── build/
-    └── logs/              # Log output directory
+    └── logs/                    # Log output directory
 ```
 
 ---

@@ -8,11 +8,11 @@
 #include "MessageHandler.h"
 #include "aeron_wrapper.h"
 
-class eCROPEngine final {
+class eCropEngine final {
    public:
-    eCROPEngine() noexcept;
+    eCropEngine() noexcept;
 
-    ~eCROPEngine() noexcept;
+    ~eCropEngine() noexcept;
 
     void start() noexcept;
 

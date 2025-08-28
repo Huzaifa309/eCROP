@@ -11,7 +11,7 @@
 #include "Config.h"
 #include "DatabaseFactory.h"
 #include "MessageFlow.h"
-#include "eCROPEngine.h"
+#include "eCropEngine.h"
 #include "loggerlib.h"
 
 int main(int argc, char** argv) {
@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     });
 
     try {
-        auto eKYC = std::make_unique<eCROPEngine>();
+        auto eKYC = std::make_unique<eCropEngine>();
 
         eKYC->start();
 

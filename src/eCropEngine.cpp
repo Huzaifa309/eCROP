@@ -1,11 +1,11 @@
-#include "eCROPEngine.h"
+#include "eCropEngine.h"
 
 #include <exception>
 
 #include "Config.h"
 #include "loggerlib.h"
 
-eCROPEngine::eCROPEngine() noexcept
+eCropEngine::eCropEngine() noexcept
     : _running(false), _packetsReceived(0), _messageHandler() {
     try {
         auto &cfg = Config::get();
@@ -28,9 +28,9 @@ eCROPEngine::eCROPEngine() noexcept
     }
 }
 
-eCROPEngine::~eCROPEngine() noexcept { stop(); }
+eCropEngine::~eCropEngine() noexcept { stop(); }
 
-void eCROPEngine::start() noexcept {
+void eCropEngine::start() noexcept {
     if (!_running) return;
 
     qLogger::get().info_fast("Starting eCROP engine...");
@@ -41,7 +41,7 @@ void eCROPEngine::start() noexcept {
         });
 }
 
-void eCROPEngine::stop() noexcept {
+void eCropEngine::stop() noexcept {
     if (!_running) return;
 
     if (_backgroundPoller) {
@@ -52,7 +52,7 @@ void eCROPEngine::stop() noexcept {
     qLogger::get().info_fast("eCROP engine stopped.");
 }
 
-void eCROPEngine::process_message(
+void eCropEngine::process_message(
     const aeron_wrapper::FragmentData &fragmentData) noexcept {
     ++_packetsReceived;
     try {
@@ -63,7 +63,7 @@ void eCROPEngine::process_message(
     }
 }
 
-void eCROPEngine::send_response(std::vector<char> &buffer) noexcept {
+void eCropEngine::send_response(std::vector<char> &buffer) noexcept {
     if (!_publication) return;
 
     if (buffer.empty()) return;
