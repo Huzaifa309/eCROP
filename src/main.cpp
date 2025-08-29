@@ -15,7 +15,7 @@
 #include "loggerlib.h"
 
 int main(int argc, char** argv) {
-    qLogger::get().initialize("logs/ecrop_engine.log", LogLevel::DEBUG);
+    qLogger::get().initialize("logs/eCropEngine.log", LogLevel::DEBUG);
 
     // Initialize the factory with default database types
     DatabaseFactory::initialize();
