@@ -6,7 +6,7 @@
 #include "loggerlib.h"
 
 eCropEngine::eCropEngine() noexcept
-    : _running(false), _packetsReceived(0), _messageHandler() {
+    : _running(false), _requestReceived(0), _requestHandler() {
     try {
         auto &cfg = Config::get();
         _aeron = std::make_unique<aeron_wrapper::Aeron>(cfg.AERON_DIR);
@@ -37,7 +37,7 @@ void eCropEngine::start() noexcept {
     // Start background msg processing
     _backgroundPoller = _subscription->start_background_polling(
         [this](const aeron_wrapper::FragmentData &fragmentData) {
-            process_message(fragmentData);
+            receive_request(fragmentData);
         });
 }
 
@@ -52,11 +52,11 @@ void eCropEngine::stop() noexcept {
     qLogger::get().info_fast("eCROP engine stopped.");
 }
 
-void eCropEngine::process_message(
+void eCropEngine::receive_request(
     const aeron_wrapper::FragmentData &fragmentData) noexcept {
-    ++_packetsReceived;
+    ++_requestReceived;
     try {
-        auto buffer = _messageHandler.respond(fragmentData);
+        auto buffer = _requestHandler.respond(fragmentData);
         send_response(buffer);
     } catch (const std::exception &e) {
         qLogger::get().error_fast("Error: {}", e.what());

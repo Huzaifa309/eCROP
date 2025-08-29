@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "MessageHandler.h"
+#include "RequestHandler.h"
 #include "aeron_wrapper.h"
 
 class eCropEngine final {
@@ -19,7 +19,7 @@ class eCropEngine final {
     void stop() noexcept;
 
    private:
-    void process_message(
+    void receive_request(
         const aeron_wrapper::FragmentData &fragmentData) noexcept;
     void send_response(std::vector<char> &buffer) noexcept;
 
@@ -31,7 +31,7 @@ class eCropEngine final {
         _backgroundPoller;
 
     std::atomic<bool> _running;
-    std::uint64_t _packetsReceived;
+    std::uint64_t _requestReceived;
 
-    MessageHandler _messageHandler;
+    RequestHandler _requestHandler;
 };

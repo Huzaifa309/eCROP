@@ -13,10 +13,10 @@ namespace messages {
 class IdentityMessage;
 }
 
-class MessageHandler final {
+class RequestHandler final {
    public:
-    MessageHandler() noexcept;
-    ~MessageHandler() noexcept;
+    RequestHandler() noexcept;
+    ~RequestHandler() noexcept;
 
     std::vector<char> respond(
         const aeron_wrapper::FragmentData &fragmentData) noexcept;

@@ -1,4 +1,4 @@
-#include "MessageHandler.h"
+#include "RequestHandler.h"
 
 #include <exception>
 
@@ -30,7 +30,7 @@ void log_identity(messages::IdentityMessage &identity) {
 
 }  // namespace
 
-MessageHandler::MessageHandler() noexcept {
+RequestHandler::RequestHandler() noexcept {
     auto &cfg = Config::get();
 
     try {
@@ -46,9 +46,9 @@ MessageHandler::MessageHandler() noexcept {
     }
 }
 
-MessageHandler::~MessageHandler() noexcept {}
+RequestHandler::~RequestHandler() noexcept {}
 
-std::vector<char> MessageHandler::respond(
+std::vector<char> RequestHandler::respond(
     const aeron_wrapper::FragmentData &fragmentData) noexcept {
     std::vector<char> buffer;
 
@@ -133,7 +133,7 @@ std::vector<char> MessageHandler::respond(
 }
 
 // Check if user exists in database
-bool MessageHandler::exist_user(const std::string &identityNumber,
+bool RequestHandler::exist_user(const std::string &identityNumber,
                                 const std::string &name) noexcept {
     try {
         std::string selectQuery =
@@ -169,7 +169,7 @@ bool MessageHandler::exist_user(const std::string &identityNumber,
 }
 
 // Add user to database
-bool MessageHandler::add_identity(
+bool RequestHandler::add_identity(
     messages::IdentityMessage &identity) noexcept {
     try {
         std::string type = identity.type().getCharValAsString();
@@ -218,7 +218,7 @@ bool MessageHandler::add_identity(
 }
 
 // Send response message
-std::vector<char> MessageHandler::get_buffer(
+std::vector<char> RequestHandler::get_buffer(
     messages::IdentityMessage &originalIdentity,
     bool verificationResult) noexcept {
     std::vector<char> buffer;
